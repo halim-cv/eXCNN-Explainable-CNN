@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="eXCNN - Interactive Explainable CNN Visualization Platform. Understand how deep learning models make predictions through multiple XAI methods.">
+    <title>eXCNN - Explainable CNN Visualization</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <div class="logo-icon">eX</div>
+                <h1>eXCNN</h1>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#examples">Examples</a></li>
+                    <li><a href="#interactive">Try It</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="https://github.com" target="_blank">GitHub</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Explainable CNN Visualization</h1>
+                <p>
+                    Understand how deep learning models make decisions.
+                    Explore multiple state-of-the-art explainability methods.
+                </p>
+            </div>
+        </section>
+
+        <!-- Tabs -->
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="examples">
+                Example Gallery
+            </button>
+            <button class="tab-btn" data-tab="interactive">
+                Interactive Explorer
+            </button>
+        </div>
+
+        <!-- Examples Tab -->
+        <div id="examples-tab" class="tab-content active">
+            <h2>Precomputed Examples</h2>
+            <p style="color: var(--text-secondary); margin-bottom: 2rem;">
+                Explore curated examples with detailed explanations.
+            </p>
+
+            <div class="gallery-grid" id="examplesGallery">
+                <!-- Gallery items will be dynamically populated by JS -->
+                <div style="text-align: center; grid-column: 1/-1; color: var(--text-secondary);">
+                    <span class="loading"></span> Loading examples...
+                </div>
+            </div>
+
+            <!-- Example Detail View -->
+            <div id="exampleDetail" class="hidden">
+                <div class="card">
+                    <button class="btn btn-secondary" id="backToGallery" style="margin-bottom: 2rem;">
+                        Back to Gallery
+                    </button>
+
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                        <div>
+                            <h2 id="exampleTitle" style="margin: 0; font-size: 2rem; color: var(--text-primary);"></h2>
+                            <p id="exampleSubtitle" style="color: var(--text-secondary); margin-top: 0.5rem;"></p>
+                        </div>
+                        <div id="exampleConfidence"
+                            style="font-size: 1.25rem; font-weight: 700; color: var(--success-color);">
+                        </div>
+                    </div>
+
+                    <div class="viz-grid" id="exampleResults">
+                        <!-- Will be populated dynamically -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Interactive Tab -->
+        <div id="interactive-tab" class="tab-content">
+            <div class="interactive-layout">
+
+                <!-- Main Analysis Area -->
+                <div>
+                    <div class="card upload-section">
+                        <div class="upload-area" id="uploadArea">
+                            <div class="upload-icon" style="margin-bottom: 1rem; color: var(--text-secondary);">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                    <polyline points="17 8 12 3 7 8" />
+                                    <line x1="12" y1="3" x2="12" y2="15" />
+                                </svg>
+                            </div>
+                            <h3 class="upload-text">Drop Image Here or Click to Upload</h3>
+                            <p class="upload-hint">Supports JPG, PNG (Max 5MB)</p>
+                            <input type="file" id="fileInput" accept="image/*">
+                        </div>
+
+                        <div id="imagePreview" class="hidden" style="margin-top: 2rem;">
+                            <div class="gallery-image-container"
+                                style="height: 300px; border-radius: var(--radius-md);">
+                                <img id="previewImage" src="" alt="Preview">
+                            </div>
+                        </div>
+
+                        <div id="analysisControls" class="hidden controls-container">
+                            <div class="select-wrapper">
+                                <label
+                                    style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--text-secondary);">Explanation
+                                    Method</label>
+                                <select id="methodSelect">
+                                    <option value="all">All Methods (Recommended)</option>
+                                    <option value="gradcam">Grad-CAM</option>
+                                    <option value="occlusion">Occlusion Sensitivity</option>
+                                    <option value="guidedbackprop">Guided Backprop</option>
+                                    <option value="guided_gradcam">Guided Grad-CAM</option>
+                                </select>
+                            </div>
+
+                            <div id="occlusionSettings" class="hidden">
+                                <label style="margin-right: 0.5rem;">Window Size:</label>
+                                <input type="number" id="windowSize" value="15" min="5" max="50"
+                                    style="padding: 0.5rem; border: 1px solid var(--border-color); border-radius: var(--radius-sm);"
+                                    title="Occlusion Window Size">
+                            </div>
+
+                            <button id="analyzeBtn" class="btn btn-primary" style="min-width: 200px;">
+                                Analyze Image
+                            </button>
+
+                            <!-- Progress Bar -->
+                            <div id="analysisProgress" class="hidden" style="width: 100%; margin-top: 1.5rem;">
+                                <div
+                                    style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; color: var(--text-primary); font-size: 0.9rem; font-weight: 500;">
+                                    <span id="progressText">Initializing...</span>
+                                    <span id="progressPercent">0%</span>
+                                </div>
+                                <div class="confidence-track">
+                                    <div id="progressBar" class="confidence-fill" style="width: 0%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="interactiveResults" class="results-section hidden">
+                        <div class="prediction-card">
+                            <div class="prediction-label" id="predictionLabel">Loading...</div>
+                            <div class="prediction-confidence" id="predictionConfidence"></div>
+
+                            <div class="top-predictions" style="margin-top: 1.5rem; text-align: left;">
+                                <h4
+                                    style="margin-bottom: 1rem; color: var(--text-secondary); font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.05em;">
+                                    Top 5 Predictions</h4>
+                                <div id="topPredictions"></div>
+                            </div>
+                        </div>
+
+                        <div class="viz-grid" id="explanationsGrid">
+                            <!-- Populated by JS -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- History Sidebar -->
+                <div class="history-sidebar">
+                    <div class="card" style="padding: 1.5rem;">
+                        <div
+                            style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                            <h3 style="font-size: 1.1rem; color: var(--text-primary);">Recent History</h3>
+                            <button id="clearHistoryBtn"
+                                style="background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 0.85rem; font-weight: 600;">Clear</button>
+                        </div>
+                        <div id="historyList" class="history-list">
+                            <div
+                                style="text-align: center; color: var(--text-muted); padding: 1rem 0; font-size: 0.9rem;">
+                                No history yet
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- About Section -->
+        <section id="about" class="card" style="margin-top: 4rem;">
+            <h2>About This Project</h2>
+            <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                eXCNN is an interactive platform for understanding how Convolutional Neural Networks
+                make predictions. By implementing multiple state-of-the-art explainability methods,
+                we provide insights into the "black box" of deep learning.
+            </p>
+
+            <h3 style="margin-top: 2rem;">Technologies Used</h3>
+            <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1rem;">
+                <span class="badge"
+                    style="padding: 0.5rem 1rem; background: var(--bg-tertiary); border-radius: 2rem; color: var(--text-secondary);">
+                    PyTorch
+                </span>
+                <span class="badge"
+                    style="padding: 0.5rem 1rem; background: var(--bg-tertiary); border-radius: 2rem; color: var(--text-secondary);">
+                    FastAPI
+                </span>
+                <span class="badge"
+                    style="padding: 0.5rem 1rem; background: var(--bg-tertiary); border-radius: 2rem; color: var(--text-secondary);">
+                    pytorch-grad-cam
+                </span>
+                <span class="badge"
+                    style="padding: 0.5rem 1rem; background: var(--bg-tertiary); border-radius: 2rem; color: var(--text-secondary);">
+                    Vanilla JS
+                </span>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 eXCNN Project. Built for educational purposes.</p>
+            <p style="margin-top: 0.5rem; font-size: 0.875rem;">
+                Powered by state-of-the-art explainability research
+            </p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="app.js"></script>
+</body>
+
+</html>
