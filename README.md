@@ -2,6 +2,16 @@
 
 eXCNN is a comprehensive interactive platform designed to visualize and decode the decision-making process of Convolutional Neural Networks (CNNs). By leveraging state-of-the-art Explainable AI (XAI) methods, it allows users to see exactly "where" and "what" a deep learning model looks at when classifying images.
 
+![eXCNN Dashboard](assets/screenshots/screenshot_1.png)
+
+## Interface Gallery
+
+| Analysis View | Feature Visualization |
+| :---: | :---: |
+| ![Analysis](assets/screenshots/screenshot_2.png) | ![Features](assets/screenshots/screenshot_3.png) |
+| **Model Insights** | **Detailed Breakdown** |
+| ![Insights](assets/screenshots/screenshot_4.png) | |
+
 ## Key Features
 
 *   **Interactive Analysis**: Upload any image (JPG/PNG) to receive real-time classification and visual explanations.
@@ -62,6 +72,7 @@ Open your browser and navigate to: **[http://localhost:8080](http://localhost:80
 eXCNN/
 ├── assets/                 # Static assets and database files
 │   ├── imagenet_labels.json # Full 1000 ImageNet class labels
+│   ├── screenshots/        # Application screenshots
 │   └── precomputed/        # Gallery examples with generated visualizations
 ├── backend/                # FastAPI application
 │   ├── api.py              # Main API endpoints
@@ -93,4 +104,3 @@ eXCNN/
 
 ## License
 This project is built for educational purposes. Code is open for modification and study.
-
