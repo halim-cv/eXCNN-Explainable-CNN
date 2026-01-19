@@ -16,9 +16,6 @@ eXCNN is a comprehensive interactive platform designed to visualize and decode t
 *   **Robust Backend**: Powered by PyTorch models (ResNet50) and FastAPI for high-performance inference.
 *   **Modern Frontend**: A clean, monochrome interface focusing on usability and data visualization.
 
-
-## Interface Gallery
-
 ## Interface Gallery
 
 <table align="center">
@@ -123,6 +120,7 @@ eXCNN/
 
 ## License
 This project is built for educational purposes. Code is open for modification and study.
+
 
 
 
