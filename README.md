@@ -16,6 +16,15 @@ eXCNN is a comprehensive interactive platform designed to visualize and decode t
 *   **Robust Backend**: Powered by PyTorch models (ResNet50) and FastAPI for high-performance inference.
 *   **Modern Frontend**: A clean, monochrome interface focusing on usability and data visualization.
 
+
+## Interface Gallery
+
+| Analysis View | Feature Visualization |
+| :---: | :---: |
+| ![Analysis](<img src="https://github.com/halim-cv/eXCNN-Explainable-CNN/blob/main/assets/screenshots/2026-01-18%20(4).png">) | ![Features](<img src="https://github.com/halim-cv/eXCNN-Explainable-CNN/blob/main/assets/screenshots/2026-01-18%20(5).png">) |
+| **Model Insights** | **Detailed Breakdown** |
+| ![Insights](<img src="https://github.com/halim-cv/eXCNN-Explainable-CNN/blob/main/assets/screenshots/2026-01-18%20(6).png">) | |
+
 ---
 
 ## Technology Stack
@@ -94,5 +103,6 @@ eXCNN/
 
 ## License
 This project is built for educational purposes. Code is open for modification and study.
+
 
 
