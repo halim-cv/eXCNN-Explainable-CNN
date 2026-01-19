@@ -28,8 +28,8 @@ eXCNN is a comprehensive interactive platform designed to visualize and decode t
     </td>
   </tr>
   <tr>
-    <th>Feature Visualization</th>
-    <th>Model Insights</th>
+    <th>Feature Visualization 1</th>
+    <th>Feature Visualization 2</th>
   </tr>
   <tr>
     <td align="center">
@@ -120,6 +120,7 @@ eXCNN/
 
 ## License
 This project is built for educational purposes. Code is open for modification and study.
+
 
 
 
