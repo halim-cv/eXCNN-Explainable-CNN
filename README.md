@@ -21,11 +21,29 @@ eXCNN is a comprehensive interactive platform designed to visualize and decode t
 
 ## Interface Gallery
 
-| Analysis View | Feature Visualization |
-| :---: | :---: |
-| <img src="https://github.com/halim-cv/eXCNN-Explainable-CNN/blob/main/assets/screenshots/2026-01-18%20(4).png"> | <img src="https://github.com/halim-cv/eXCNN-Explainable-CNN/blob/main/assets/screenshots/2026-01-18%20(5).png"> |
-| **Model Insights**
-| <img src="https://github.com/halim-cv/eXCNN-Explainable-CNN/blob/main/assets/screenshots/2026-01-18%20(6).png"> |
+<table align="center">
+  <tr>
+    <th colspan="2">Analysis View</th>
+  </tr>
+  <tr>
+    <td colspan="2" align="center">
+      <img src="https://github.com/halim-cv/eXCNN-Explainable-CNN/blob/main/assets/screenshots/2026-01-18%20(4).png" width="90%">
+    </td>
+  </tr>
+  <tr>
+    <th>Feature Visualization</th>
+    <th>Model Insights</th>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="https://github.com/halim-cv/eXCNN-Explainable-CNN/blob/main/assets/screenshots/2026-01-18%20(5).png" width="90%">
+    </td>
+    <td align="center">
+      <img src="https://github.com/halim-cv/eXCNN-Explainable-CNN/blob/main/assets/screenshots/2026-01-18%20(6).png" width="90%">
+    </td>
+  </tr>
+</table>
+
 
 ---
 
@@ -105,6 +123,7 @@ eXCNN/
 
 ## License
 This project is built for educational purposes. Code is open for modification and study.
+
 
 
 
