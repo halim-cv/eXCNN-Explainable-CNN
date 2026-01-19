@@ -19,10 +19,13 @@ eXCNN is a comprehensive interactive platform designed to visualize and decode t
 
 ## Interface Gallery
 
+## Interface Gallery
+
 | Analysis View | Feature Visualization |
 | :---: | :---: |
-| <img src="https://github.com/halim-cv/eXCNN-Explainable-CNN/blob/main/assets/screenshots/2026-01-18%20(4).png">| <img src="https://github.com/halim-cv/eXCNN-Explainable-CNN/blob/main/assets/screenshots/2026-01-18%20(5).png">|
-| **Model Insights** |
+| <img src="https://github.com/halim-cv/eXCNN-Explainable-CNN/blob/main/assets/screenshots/2026-01-18%20(4).png"> | <img src="https://github.com/halim-cv/eXCNN-Explainable-CNN/blob/main/assets/screenshots/2026-01-18%20(5).png"> |
+| **Model Insights**
+| <img src="https://github.com/halim-cv/eXCNN-Explainable-CNN/blob/main/assets/screenshots/2026-01-18%20(6).png"> |
 
 ---
 
